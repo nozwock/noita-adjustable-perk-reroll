@@ -222,7 +222,7 @@ mod_settings = {
   {
     id = "price_cap",
     ui_name = "Price Cap",
-    value_default = 2,
+    value_default = 10,
     value_min = 0,
     value_max = 20,
     value_precision = 1,
