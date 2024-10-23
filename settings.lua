@@ -196,6 +196,7 @@ mod_settings = {
   {
     id = "price_start",
     ui_name = "Price Start",
+    ui_description = "The initial cost of a reroll.",
     value_default = 2,
     value_min = 0,
     value_max = 10,
@@ -208,6 +209,7 @@ mod_settings = {
   {
     id = "price_growth",
     ui_name = "Price Growth",
+    ui_description = "The percentage increase in reroll cost after each use.",
     value_default = 1,
     value_min = 0,
     value_max = 4,
@@ -220,6 +222,7 @@ mod_settings = {
   {
     id = "price_cap",
     ui_name = "Price Cap",
+    ui_description = "The maximum possible cost a reroll can reach.",
     value_default = 10,
     value_min = 0,
     value_max = 20,
@@ -231,7 +234,7 @@ mod_settings = {
   {
     id = "forever_reroll",
     ui_name = "Forever Reroll Machine",
-    ui_description = "Reroll machine wouldn't be disabled upon picking a perk.",
+    ui_description = "The reroll machine will remain active after selecting a perk.",
     value_default = false,
     scope = MOD_SETTING_SCOPE_RUNTIME,
   },
