@@ -29,7 +29,7 @@ end
 ---@param number number
 ---@param decimal? integer
 local function TruncateNumber(number, decimal)
-  if decimal <= 0 then decimal = nil end
+  if decimal and decimal <= 0 then decimal = nil end
   local pow = 10 ^ (decimal or 0)
   return math.floor(number * pow) / pow
 end
