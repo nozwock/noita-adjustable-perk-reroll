@@ -1,6 +1,6 @@
 <Mod
 	name="Adjustable Perk Reroll"
-	description=""
+	description="Let’s you tweak different parts of the perk reroll machines, like reroll costs."
 	request_no_api_restrictions="0" 
 /> 
 
