@@ -222,7 +222,7 @@ mod_settings = {
   {
     id = "price_cap",
     ui_name = "Price Cap",
-    ui_description = "The maximum possible cost a reroll can reach.",
+    ui_description = "The maximum possible cost a reroll can reach.\nA value of 0 indicates that there is no price cap.",
     value_default = 10,
     value_min = 0,
     value_max = 20,
