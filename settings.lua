@@ -149,18 +149,16 @@ local function ModSettingSlider(
   local x_end, _, w = select(4, GuiGetPreviousWidgetInfo(gui))
   local display_text = string.format(value_formatting, value_new * (value_display_multiplier or 1))
   local tw = GuiGetTextDimensions(gui, display_text)
-  GuiImageNinePiece(gui, im_id + 1, x_start, y_start, x_end - x_start + w + tw - 2, 8, 0, empty, empty)
-  local hovered = select(3, GuiGetPreviousWidgetInfo(gui))
 
-  mod_setting_tooltip(mod_id, gui, in_main_menu, setting)
-
-  if hovered then
-    GuiColorSetForNextWidget(gui, 0.8, 0.8, 0.8, 1)
-    GuiText(gui, 0, 0, display_text)
-  end
+  GuiColorSetForNextWidget(gui, 0.8, 0.8, 0.8, 1)
+  GuiText(gui, 0, 0, display_text)
 
   GuiIdPop(gui)
   GuiLayoutEnd(gui)
+
+  GuiImageNinePiece(gui, im_id + 1, x_start, y_start, x_end - x_start + w + tw - 2, 8, 0, empty, empty)
+
+  mod_setting_tooltip(mod_id, gui, in_main_menu, setting)
 
   if value ~= value_new then
     ModSettingSetNextValue(mod_setting_get_id(mod_id, setting), value_new, false)
