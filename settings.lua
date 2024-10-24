@@ -100,7 +100,7 @@ end
 ---@param in_main_menu boolean
 ---@param im_id integer
 ---@param setting table
----@param value_formatting string
+---@param value_formatting string|fun(value: number):string
 ---@param value_display_multiplier? number
 ---@param value_map? fun(value:number):number
 local function ModSettingSlider(
@@ -144,10 +144,19 @@ local function ModSettingSlider(
     " ",
     64
   )
+  local x_end, _, w = select(4, GuiGetPreviousWidgetInfo(gui))
   if value_map then value_new = value_map(value_new) end
 
-  local x_end, _, w = select(4, GuiGetPreviousWidgetInfo(gui))
-  local display_text = string.format(value_formatting, value_new * (value_display_multiplier or 1))
+  local display_text
+  if type(value_formatting) == "function" then
+    display_text = value_formatting(value_new * (value_display_multiplier or 1))
+  elseif type(value_formatting) == "string" then
+    display_text = string.format(value_formatting, value_new * (value_display_multiplier or 1))
+  else
+    error("unreachable")
+  end
+
+  -- local display_text = string.format(value_formatting, value_new * (value_display_multiplier or 1))
   local tw = GuiGetTextDimensions(gui, display_text)
 
   GuiColorSetForNextWidget(gui, 0.8, 0.8, 0.8, 1)
@@ -227,7 +236,10 @@ mod_settings = {
     value_min = 0,
     value_max = 20,
     value_precision = 1,
-    value_display_formatting = " $ %.1fK",
+    value_display_formatting = function(value)
+      if value == 0 then return " None" end
+      return string.format(" $ %.1fK", value)
+    end,
     ui_fn = mod_setting_float,
     scope = MOD_SETTING_SCOPE_RUNTIME,
   },
